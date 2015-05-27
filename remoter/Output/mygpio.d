@@ -1,0 +1,15 @@
+..\output\mygpio.o: myGPIO.c
+..\output\mygpio.o: myGPIO.h
+..\output\mygpio.o: ..\CMSIS\stm32f10x.h
+..\output\mygpio.o: ..\CMSIS\core_cm3.h
+..\output\mygpio.o: D:\MDK\ARM\ARMCC\bin\..\include\stdint.h
+..\output\mygpio.o: ..\CMSIS\system_stm32f10x.h
+..\output\mygpio.o: ..\USER\stm32f10x_conf.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_adc.h
+..\output\mygpio.o: ..\CMSIS\stm32f10x.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_dma.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_exti.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_gpio.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_rcc.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_tim.h
+..\output\mygpio.o: ..\FWlib\inc\stm32f10x_usart.h
