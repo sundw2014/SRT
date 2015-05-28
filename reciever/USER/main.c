@@ -16,7 +16,9 @@
 #include "CommandCalc.h"
 #include "myGPIO.h"
 
-float ComValue_Prop;//舵量到速度的比例值
+float ThrottlePulseProp;//油门舵量到PWM_PULSE的比例值
+float PitchPulseProp;	 //一号副翼舵量到PWM_PULSE的比例值
+float RollPulseProp;	 //二号副翼舵量到PWM_PULSE的比例值
 
 // 软件延时
 void Delay(__IO uint32_t nCount)
@@ -32,10 +34,10 @@ void Delay(__IO uint32_t nCount)
 
 int main(void)
 {	
-	int x_m,y_m;        //中点值
-	int x_max=4000,x_min=100,y_max=4000,y_min=100;   //备用值行程
+	int Throttle_m,Pitch_m, Roll_m;        //中点值
+	int Throttle_MAX=4000,Pitch_MAX=4000,Roll_MIN=100,Roll_MAX=4000;  //备用值行程
 	
-	int x_ComValue=0,y_ComValue=0;
+	int Throttle_ActValue=0,Pitch_ActValue=0,Roll_ActValue=0;;			//相对于中点值的动作量
 	
 	/* enable adc1 and config adc1 to dma mode */
 	ADC1_Init();
@@ -45,9 +47,12 @@ int main(void)
 	/*摇杆校准*/ 
 	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
 	while(!FilterFlag);
-	x_m=After_filter[0];
-	y_m=After_filter[1];
-	ComValue_Prop=4*(float)(CAR_SpeedMAX)/(x_max-x_min+y_max-y_min);
+	Throttle_m=After_filter[0];
+	Pitch_m=After_filter[1];
+	Roll_m=After_filter[2];
+	ThrottlePulseProp=(float)(ThrottlePulseMAX-ThrottlePulseOffset)/(Throttle_MAX-Throttle_m);
+	PitchPulseProp=(float)(Flap1PulseMAX-Flap1PulseOffset+Flap2PulseMAX-Flap2PulseOffset)/(2*(Pitch_MAX-Pitch_m));
+	RollPulseProp=(float)(Flap1PulseMAX-Flap1PulseOffset+Flap2PulseMAX-Flap2PulseOffset)/(Roll_MAX-Roll_MIN);
 	
 	/* USART1 config */
 	USART1_Config();
@@ -64,9 +69,12 @@ int main(void)
 		{
 			FilterFlag=0;
 			ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-			x_ComValue=After_filter[0]-x_m;
-			y_ComValue=After_filter[1]-y_m;
-			CommandCalc(x_ComValue,y_ComValue);
+			
+			Throttle_ActValue=After_filter[0]-Throttle_m;
+			Pitch_ActValue=After_filter[1]-Pitch_m;
+			Roll_ActValue=After_filter[2]-Roll_m;
+			
+			CommandCalc(Throttle_ActValue,Pitch_ActValue,Roll_ActValue);
 			//printf("%d,%d\r\n",After_filter[0],After_filter[1]);
 		}
 	}

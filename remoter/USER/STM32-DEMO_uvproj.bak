@@ -459,6 +459,11 @@
               <FileType>1</FileType>
               <FilePath>.\CommandCalc.c</FilePath>
             </File>
+            <File>
+              <FileName>myGPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\myGPIO.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
