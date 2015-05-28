@@ -15,7 +15,7 @@
 extern float ThrottlePulseProp;//油门舵量到PWM_PULSE的比例值
 extern float PitchPulseProp;	 //一号副翼舵量到PWM_PULSE的比例值
 extern float RollPulseProp;	 //二号副翼舵量到PWM_PULSE的比例值
-extern unsigned char CommandBuf[24];
+extern unsigned char CommandBuf[27];
 
 void CommandCalc(int Thro,int Ptch,int Roll);
 

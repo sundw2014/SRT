@@ -72,6 +72,8 @@ int main(void)
 		TIM_SetCompare1(TIM3,ThroPulse);
 		TIM_SetCompare2(TIM3,Flap1Pulse);
 		TIM_SetCompare3(TIM3,Flap2Pulse);
+//		printf("%s\r\n");
+//		printf("%d|%d|%d\r\n",ThroPulse,Flap1Pulse,Flap2Pulse);
 	} 
 	else
 	{

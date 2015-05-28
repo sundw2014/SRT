@@ -6,15 +6,17 @@ int myABS(int a)
 	return a;
 }
 
-unsigned char CommandBuf[24];
+unsigned char CommandBuf[27];
 void CommandCalc(int Thro,int Ptch ,int Roll)
 {
 	int Pulse;
 	
-	if(Thro>50)	
+	if(Thro>10)	
 			Pulse=ThrottlePulseProp*Thro+ThrottlePulseOffset;
 	else
 			Pulse=ThrottlePulseOffset;
+	if(Pulse>ThrottlePulseMAX)
+		Pulse=ThrottlePulseMAX;
 	sprintf(CommandBuf,"com%4d,,,",Pulse);
 	
 	
@@ -25,14 +27,14 @@ void CommandCalc(int Thro,int Ptch ,int Roll)
 	Pulse=Flap1PulseOffset+PitchPulseProp*Ptch+RollPulseProp*Roll;		
 	if(Pulse>Flap1PulseMAX)
 		Pulse=Flap1PulseMAX;
-	if(Pulse<0)
-		Pulse=0;
+	if(Pulse<Flap1PulseOffset)
+		Pulse=Flap1PulseOffset;
 	sprintf((CommandBuf+10),"%4d,,,",Pulse);
 	
 	Pulse=Flap2PulseOffset+PitchPulseProp*Ptch-RollPulseProp*Roll;		
 	if(Pulse>Flap1PulseMAX)
 		Pulse=Flap1PulseMAX;
-	if(Pulse<0)
-		Pulse=0;
-	sprintf((CommandBuf+17),"%4dend",Pulse);
+	if(Pulse<Flap2PulseOffset)
+		Pulse=Flap2PulseOffset;
+	sprintf((CommandBuf+17),"%4dend%c%c%c",Pulse,'\0','\0','\0');
 }

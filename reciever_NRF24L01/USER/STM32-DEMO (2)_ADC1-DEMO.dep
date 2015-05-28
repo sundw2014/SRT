@@ -1,6 +1,6 @@
 Dependencies for Project 'STM32-DEMO (2)', Target 'ADC1-DEMO': (DO NOT MODIFY !)
 F (..\CMSIS\startup\startup_stm32f10x_hd.s)(0x55669F74)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x--list ..\listing\startup_stm32f10x_hd.lst --xref -o ..\output\startup_stm32f10x_hd.o --depend ..\output\startup_stm32f10x_hd.d)
-F (.\main.c)(0x5566D88F)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\USER -I..\FWlib\inc -I..\FWlib\src-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -o ..\output\main.o --omf_browse ..\output\main.crf --depend ..\output\main.d)
+F (.\main.c)(0x556724FF)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\USER -I..\FWlib\inc -I..\FWlib\src-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -o ..\output\main.o --omf_browse ..\output\main.crf --depend ..\output\main.d)
 I (..\CMSIS\stm32f10x.h)(0x55669F74)
 I (..\CMSIS\core_cm3.h)(0x55669F74)
 I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -20,10 +20,10 @@ I (filter.h)(0x55669F75)
 I (adc.h)(0x55669F75)
 I (misc.h)(0x55669F75)
 I (timer.h)(0x55669F75)
-I (CommandCalc.h)(0x5566D125)
+I (CommandCalc.h)(0x5566E016)
 I (D:\MDK\ARM\ARMCC\include\math.h)(0x52FDD27E)
 I (myGPIO.h)(0x55669F75)
-I (SPI_NRF.h)(0x5566D125)
+I (SPI_NRF.h)(0x5566E016)
 F (.\stm32f10x_it.c)(0x55669F75)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\USER -I..\FWlib\inc -I..\FWlib\src-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -o ..\output\stm32f10x_it.o --omf_browse ..\output\stm32f10x_it.crf --depend ..\output\stm32f10x_it.d)
 I (stm32f10x_it.h)(0x55669F75)
 I (..\CMSIS\stm32f10x.h)(0x55669F74)
@@ -121,8 +121,8 @@ I (..\FWlib\inc\stm32f10x_spi.h)(0x55669F74)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55669F74)
 I (misc.h)(0x55669F75)
 F (.\stm32f10x_conf.h)(0x5566BFE3)()
-F (.\CommandCalc.c)(0x5566D125)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\USER -I..\FWlib\inc -I..\FWlib\src-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -o ..\output\commandcalc.o --omf_browse ..\output\commandcalc.crf --depend ..\output\commandcalc.d)
-I (CommandCalc.h)(0x5566D125)
+F (.\CommandCalc.c)(0x5566E015)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\USER -I..\FWlib\inc -I..\FWlib\src-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -o ..\output\commandcalc.o --omf_browse ..\output\commandcalc.crf --depend ..\output\commandcalc.d)
+I (CommandCalc.h)(0x5566E016)
 I (D:\MDK\ARM\ARMCC\include\math.h)(0x52FDD27E)
 I (usart1.h)(0x5566D125)
 I (..\CMSIS\stm32f10x.h)(0x55669F74)
@@ -155,7 +155,7 @@ I (..\FWlib\inc\stm32f10x_spi.h)(0x55669F74)
 I (..\FWlib\inc\stm32f10x_tim.h)(0x55669F74)
 I (..\FWlib\inc\stm32f10x_usart.h)(0x55669F74)
 F (.\SPI_NRF.c)(0x5566CA01)(-c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -I..\CMSIS -I..\USER -I..\FWlib\inc -I..\FWlib\src-I D:\MDK\ARM\RV31\INC-I D:\MDK\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\MDK\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -o ..\output\spi_nrf.o --omf_browse ..\output\spi_nrf.crf --depend ..\output\spi_nrf.d)
-I (SPI_NRF.h)(0x5566D125)
+I (SPI_NRF.h)(0x5566E016)
 I (..\CMSIS\stm32f10x.h)(0x55669F74)
 I (..\CMSIS\core_cm3.h)(0x55669F74)
 I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x52FDD27E)

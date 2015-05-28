@@ -6,7 +6,7 @@ int myABS(int a)
 	return a;
 }
 
-unsigned char CommandBuf[24];
+unsigned char CommandBuf[27];
 void CommandCalc(int Thro,int Ptch ,int Roll)
 {
 	int Pulse;

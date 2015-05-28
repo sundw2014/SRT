@@ -93,11 +93,12 @@ int main(void)
 			
 			CommandCalc(Throttle_ActValue,Pitch_ActValue,Roll_ActValue);
 			
-			do
-	   { 	  
+//			do
+//	   { 	
+//			  printf("send failed"); 
 				status = NRF_Tx_Dat(CommandBuf);
-		 }while(status == MAX_RT);
-			//printf("%d,%d\r\n",After_filter[0],After_filter[1]);
+//		 }while(status == MAX_RT);
+			//printf("%s\r\n",CommandBuf);
 		}
 	}
 }
