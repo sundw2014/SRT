@@ -8,7 +8,7 @@ void TIM1_Config()
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);          
   TIM_TimeBaseStructure.TIM_Prescaler = (7200-1);                 //10KHZ                        
   TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;    
-  TIM_TimeBaseStructure.TIM_Period = 1000;                        //0.1s interrupt            
+  TIM_TimeBaseStructure.TIM_Period = 5000;                        //0.5s interrupt            
   TIM_TimeBaseStructure.TIM_ClockDivision = 0;                                       
   TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
   TIM_TimeBaseInit(TIM1,&TIM_TimeBaseStructure);
@@ -20,9 +20,42 @@ void TIM1_Config()
   NVIC_Init(&NVIC_InitStructure); 
 	
 	
-	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
+	
 	TIM_Cmd(TIM1, ENABLE);	
 }
+
+
+
+void TIM2_Config(void)
+{
+	NVIC_InitTypeDef NVIC_InitStructure;
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+	TIM_OCInitTypeDef  TIM_OCInitStructure;  
+	
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);          
+  TIM_TimeBaseStructure.TIM_Prescaler = (72-1);                 //1MHz                        
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;    
+  TIM_TimeBaseStructure.TIM_Period = 1000;                        //1000Hz            
+  TIM_TimeBaseStructure.TIM_ClockDivision = 0;                                       
+  TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
+  TIM_TimeBaseInit(TIM2,&TIM_TimeBaseStructure);
+	
+	/* PWM1 Mode configuration: Channel4 */  
+  TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;                           //???PWM??1  
+  TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;                
+  TIM_OCInitStructure.TIM_Pulse = 0;                                       //?????,???????????,??????  
+  TIM_OCInitStructure.TIM_OCPolarity =TIM_OCPolarity_Low;                    //?????????CCR1?????  
+  TIM_OC4Init(TIM2, &TIM_OCInitStructure);                                    //????1      
+  TIM_OC4PreloadConfig(TIM2, TIM_OCPreload_Enable); 
+	
+	
+	
+	 TIM_ARRPreloadConfig(TIM2, ENABLE); 
+	 TIM_Cmd(TIM2, ENABLE);	
+}
+
+
+
 void TIM3_Config(void)  
 {  
     TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;  
@@ -59,7 +92,15 @@ void TIM3_Config(void)
     TIM_OC3Init(TIM3, &TIM_OCInitStructure);                                    //????2  
     TIM_OC3PreloadConfig(TIM3, TIM_OCPreload_Enable);  
 		
+		/* PWM1 Mode configuration: Channel4 */  
+    TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;  
+    TIM_OCInitStructure.TIM_Pulse =0;                                       //????2??????,??????????PWM  
+    TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;                    //?????????CCR2????? 
+    TIM_OC4Init(TIM3, &TIM_OCInitStructure);                                    //????2  
+    TIM_OC4PreloadConfig(TIM3, TIM_OCPreload_Enable);  
+		
     TIM_ARRPreloadConfig(TIM3, ENABLE);                                         //??TIM3?????ARR  
     /* TIM3 enable counter */  
     TIM_Cmd(TIM3, ENABLE);                                                      //??TIM3   
 } 
+

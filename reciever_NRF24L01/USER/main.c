@@ -60,18 +60,32 @@ int main(void)
 	 
 	 NRF_RX_Mode();
 	 
+	 /* TIM2 config */
+	 TIM2_Config();
+	 /* TIM1 config */
+	 TIM1_Config();
+	
 	while(1)
 	{
+		
+	/*Init and enable	TIM1_IT*/
+	TIM_SetCounter(TIM1,0);
+	TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
+		
 		/*等待接收数据*/
 	status = NRF_Rx_Dat(CommandBuf);
 
+	TIM_ITConfig(TIM1, TIM_IT_Update, DISABLE);
+	TIM_SetCompare4(TIM2,0);
+	/**************************/
+		
 	   /*判断接收状态*/
 	if(status == RX_DR)
 	{
 		sscanf(CommandBuf,"com%d,,,%d,,,%dend",&ThroPulse,&Flap1Pulse,&Flap2Pulse);
 		TIM_SetCompare1(TIM3,ThroPulse);
-		TIM_SetCompare2(TIM3,Flap1Pulse);
-		TIM_SetCompare3(TIM3,Flap2Pulse);
+		TIM_SetCompare2(TIM3,Flap2Pulse);
+		TIM_SetCompare3(TIM3,Flap1Pulse);
 //		printf("%s\r\n");
 //		printf("%d|%d|%d\r\n",ThroPulse,Flap1Pulse,Flap2Pulse);
 	} 

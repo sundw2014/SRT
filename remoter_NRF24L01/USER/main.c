@@ -53,8 +53,8 @@ int main(void)
 	Pitch_m=After_filter[1];
 	Roll_m=After_filter[2];
 	ThrottlePulseProp=(float)(ThrottlePulseMAX-ThrottlePulseOffset)/(Throttle_MAX-Throttle_m);
-	PitchPulseProp=(float)(Flap1PulseMAX-Flap1PulseOffset+Flap2PulseMAX-Flap2PulseOffset)/(2*(Pitch_MAX-Pitch_m));
-	RollPulseProp=(float)(Flap1PulseMAX-Flap1PulseOffset+Flap2PulseMAX-Flap2PulseOffset)/(Roll_MAX-Roll_MIN);
+	PitchPulseProp=(float)(Flap1PulseMAX-Flap1PulseMIN+Flap2PulseMAX-Flap2PulseMIN)/(2.25*(Pitch_MAX-Pitch_m));
+	RollPulseProp=(float)(Flap1PulseMAX-Flap1PulseMIN+Flap2PulseMAX-Flap2PulseMIN)/(1.1*(Roll_MAX-Roll_MIN));
 	
 	/*NRF24L01 Init*/
 	SPI_NRF_Init();
@@ -72,8 +72,8 @@ int main(void)
    	   printf("\r\n failed \r\n");
 
 	 TIM1_Config();
-	 //printf("x_m=%d,y_m=%d,COMValue_Prop=%f\r\n",x_m,y_m,ComValue_Prop);
-	
+//	 printf("%f\r\n",PitchPulseProp);
+//	 while(1);
 	 NRF_TX_Mode();
 	 
 	while(1)
@@ -91,6 +91,7 @@ int main(void)
 			Pitch_ActValue=After_filter[1]-Pitch_m;
 			Roll_ActValue=After_filter[2]-Roll_m;
 			
+	 // printf("%d|%d|%d\r\n",After_filter[0],After_filter[1],After_filter[2]);
 			CommandCalc(Throttle_ActValue,Pitch_ActValue,Roll_ActValue);
 			
 //			do

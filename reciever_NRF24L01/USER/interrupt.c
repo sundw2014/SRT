@@ -1,6 +1,7 @@
 #include "stm32f10x_it.h"
 #include "usart1.h"
 #include "filter.h"
+#include "CommandCalc.h"
 char SendFlag=0;
 void DMA1_Channel1_IRQHandler(void) 
 
@@ -31,8 +32,13 @@ void TIM1_UP_IRQHandler(void)
 	
 	if(TIM_GetITStatus(TIM1,TIM_FLAG_Update) != RESET) 
 	{
-		//printf("into TIM1_interript\n");
-		SendFlag=1;
+		TIM_SetCompare1(TIM3,ThrottlePulseOffset);
+		TIM_SetCompare2(TIM3,Flap1PulseOffset);
+		TIM_SetCompare3(TIM3,Flap2PulseOffset);
+		
+		TIM_SetCompare4(TIM2,10000);
+		/*disable	TIM1_IT*/
+		TIM_ITConfig(TIM1, TIM_IT_Update, DISABLE);
 	}
 	
 	TIM_ClearITPendingBit(TIM1, TIM_FLAG_Update);

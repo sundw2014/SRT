@@ -7,9 +7,11 @@
 #define PI 3.1415927
 #define ThrottlePulseMAX 2000
 #define Flap1PulseMAX 2000
+#define Flap1PulseMIN 1000
+#define Flap2PulseMIN 1000
 #define Flap2PulseMAX 2000
 #define ThrottlePulseOffset 1000
-#define Flap1PulseOffset 1000
+#define Flap1PulseOffset 2000
 #define Flap2PulseOffset 1000
 
 extern float ThrottlePulseProp;//油门舵量到PWM_PULSE的比例值

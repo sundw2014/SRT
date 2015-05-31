@@ -17,3 +17,5 @@
 ..\output\interrupt.o: usart1.h
 ..\output\interrupt.o: D:\MDK\ARM\ARMCC\bin\..\include\stdio.h
 ..\output\interrupt.o: filter.h
+..\output\interrupt.o: CommandCalc.h
+..\output\interrupt.o: D:\MDK\ARM\ARMCC\bin\..\include\math.h
